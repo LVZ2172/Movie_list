@@ -1,0 +1,13 @@
+
+/*# sourceMappingURL=app.css.map */
+.bootstrap#override .jumbotron {
+  background-image: url('background.jpg');
+  margin-bottom: 0px;
+}
+
+.container#content {
+  background-color: rgba(37, 186, 255, 0.72);
+  border-radius: 5px;
+  height: 500px;
+  box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.4);
+}
