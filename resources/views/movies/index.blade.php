@@ -8,11 +8,9 @@
     </div>
 @endif
 
-  <div class="container">
     <h2>Movie List</h2>
     @foreach ($movies as $movie)
-    <ul>
-      <h3>- <a href="movies/{{ $movie->id }}">{{ $movie->Name }}</h3></a>
+      <h3><a href="movies/{{ $movie->id }}">{{ $movie->Name }}</h3></a>
 
       <!-- <form action="{{ url('movies/'.$movie->id) }}" method="POST">
             {!! csrf_field() !!}
@@ -24,21 +22,14 @@
 
         </form> -->
 
-        <div class="col-md-6 text-right">
+        <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-primary">Edit Movie</a>
         {!! Form::open([
             'method' => 'DELETE',
             'route' => ['movies.destroy', $movie->id]
         ]) !!}
             {!! Form::submit('Delete this movie?', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
-       </div>
 
-        <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-primary">Edit Movie</a>
         <hr>
-
-
-    </ul>
     @endforeach
-  </div>
-
 @stop

@@ -2,11 +2,22 @@
 
 @section('content')
 
-<div class="container">
   <h1>{{ $movies->Name }}</h1>
-  <div class="container">
-    <h3>{{ $movies->description }}</h3>
-  </div>
-</div>
+  <h4>{{ $movies->description }}</h4>
+    <hr>
+  <h3>Reviews</h3>
+      @foreach ($movies->reviews as $review)
+        <h5>Author: {{ $review->author }}</h5>
+        <p>Review: {{ $review->review }}</p>
+        {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['movies.reviews.destroy', $movies->id, $review->id]
+        ]) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+        <br>
+      @endforeach
+      <hr>
 
+  <a href="{{ route('movies.reviews.create', $movies->id) }}" class="btn btn-primary">Add Review</a>
 @stop

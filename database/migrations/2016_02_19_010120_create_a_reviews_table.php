@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewsTable extends Migration
+class CreateAReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,9 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('author');
+            $table->text('review');
+            $table->integer('movie_id');
             $table->timestamps();
         });
     }
