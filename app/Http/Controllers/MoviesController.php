@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use Flash;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -30,8 +31,10 @@ class MoviesController extends Controller
   {
     $this->validate($request, [
     'Name' => 'required',
-    'description' => 'required'
+    'description' => 'required',
     ]);
+
+    flash()->success('Successfully added!');
 
     $movie = new Movie($request->all());
     $movie->save();
@@ -48,7 +51,7 @@ class MoviesController extends Controller
 
   {
     $movies->delete();
-    return back();
+    return redirect('/movies');
   }
 
   public function edit($id)

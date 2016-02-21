@@ -1,7 +1,9 @@
 <?php
 
+Route::group(['middleware' =>['web']], function () {
 Route::resource('movies', 'MoviesController');
 Route::resource('movies.reviews', 'ReviewsController');
+});
 
 
 Route::get('/', function () {

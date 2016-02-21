@@ -11,9 +11,11 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testCreateMovieRoute()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        $this->visit('/movies');
+        $this->click('Add Movie');
+        $this->see('Create New Movie');
+        $this->seePageIs('/movies/create');
     }
 }
